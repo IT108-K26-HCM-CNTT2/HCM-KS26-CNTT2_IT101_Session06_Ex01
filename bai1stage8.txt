@@ -1,0 +1,46 @@
+
+
+
+PHẦN 1: PHÂN TÍCH
+
+
+Câu 1. Tại sao Notepad bị Not Responding khi mở file 800 MB?
+
+Notepad có thể cần nhiều RAM để tải và xử lý nội dung file lớn. Khi file có dung lượng 800 MB, máy tính có thể thiếu bộ nhớ hoặc mất nhiều thời gian xử lý, dẫn đến tình trạng Not Responding.
+
+Trong khi đó, PowerShell có thể đọc file theo từng dòng bằng Get-Content. Cách này giúp xử lý dữ liệu tuần tự thay vì bắt buộc phải nạp toàn bộ nội dung file thành một chuỗi trong bộ nhớ.
+
+Lưu ý: Get-Content mặc định vẫn có thể lưu nhiều dòng trong bộ nhớ. Vì vậy, với file rất lớn, nên sử dụng cách đọc theo luồng hoặc xử lý theo từng nhóm dòng để hạn chế sử dụng RAM.
+
+Câu 2. Tại sao lệnh cat bị lỗi trong CMD nhưng hoạt động trong PowerShell?
+
+Trong CMD truyền thống của Windows, cat không phải là lệnh có sẵn nên hệ thống báo lỗi không nhận diện được lệnh.
+
+Trong PowerShell, cat là alias của lệnh Get-Content. Vì vậy, cat có thể được sử dụng để đọc nội dung file.
+
+Tuy nhiên, khi làm việc với file log lớn, nên sử dụng Get-Content để câu lệnh rõ ràng và dễ hiểu hơn.
+
+
+PHẦN 2: HOÀN THIỆN LỆNH POWERSHELL
+
+
+Câu 1. Xem toàn bộ nội dung file server_log_800MB.log.
+
+Lệnh PowerShell:
+
+Get-Content .\server_log_800MB.log
+
+Giải thích:
+Get-Content đọc nội dung file và hiển thị kết quả trong cửa sổ PowerShell.
+
+Câu 2. Chỉ xem 10 dòng cuối cùng để kiểm tra lỗi mới nhất.
+
+Lệnh PowerShell:
+
+Get-Content .\server_log_800MB.log -Tail 10
+
+Giải thích:
+- Get-Content dùng để đọc file.
+- -Tail 10 lấy 10 dòng cuối cùng của file.
+- Cách này phù hợp khi cần kiểm tra nhanh các log mới nhất mà không cần hiển thị toàn bộ file.
+
